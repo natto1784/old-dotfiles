@@ -1,0 +1,288 @@
+;This is a mess i know
+;if you want to copy the config, you must change the colours yourself
+[colors]
+background = #191919
+foreground = #FFFFFF
+undy = #FFFFFF
+warn = 	#FF0000
+undy2 = #191919
+
+
+[bar/main]
+enable-ipc=true
+width = 100%
+height = 35
+fixed-center = true
+radius= 0.0
+;won't work without compositor
+background = rgba(0,0,0,0)
+foreground = ${colors.foreground}
+;line size for fancy underlines
+;line-size =4
+;Main Font for text
+font-0 = Consolas:pixelsize=14:weight=bold;1
+;Main icons for modules
+font-1 = Font Awesome 5 Free Solid:pixelsize=14;1
+;For Discord icon
+font-2 = Font Awesome 5 Brands:pixelsize=14;1
+;For arrow gylphs
+font-3 = Hack Nerd Font:pixelsize=24;5
+;For cjk fonts
+font-4 = Noto Sans CJK JP:pixelsize=14;1
+font-5 = Noto Sans CJK KR:pixelsize=14;1
+font-6 = Noto Sans CJK TC:pixelsize=14;1
+font-7 = Noto Sans CJK SC:pixelsize=14;1
+
+modules-left =i3 right1 music right2 previous play next right3
+modules-right =left3 memory left2 cpu left1 temperature left2 sound left1 wlan left2 battery left1 date
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+;cursor-scroll = ns-resize
+
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+index-sort = true
+wrapping-scroll = false
+ws-icon-0=1;
+ws-icon-1=2;
+ws-icon-2=3;
+ws-icon-3=4;
+ws-icon-4=5;
+ws-icon-5=6;
+ws-icon-6=7;
+ws-icon-7=8;
+ws-icon-8=9;
+ws-icon-9=10;
+label-mode = "%mode "
+;focused work
+label-focused = %icon%
+label-focused-background = #899999
+label-focused-padding= 2
+label-focused-underline=${colors.undy}
+
+;unfocused works
+label-unfocused = %icon%
+label-unfocused-padding = 2
+label-unfocused-background=${colors.background}
+;visible works (active workspace on other display)
+label-visible = %icon%
+label-visible-background = #899999
+label-visible-padding = 2
+
+;urgent work
+label-urgent = %icon%
+label-urgent-background = #899999
+label-urgent-padding = 2
+
+[module/right1]
+type = custom/text
+content =  
+content-foreground = ${colors.background}
+content-background = ${colors.foreground}
+content-font=3
+
+[module/right2]
+type = custom/text
+content =  
+content-foreground = ${colors.foreground}
+content-background = ${colors.background}
+content-font=3
+
+[module/right3]
+type = custom/text
+content =  
+content-foreground = ${colors.background}
+content-font=3
+
+[module/left1]
+type = custom/text
+content = 
+content-foreground = ${colors.background}
+content-background = ${colors.foreground}
+content-font=3
+
+[module/left2]
+type = custom/text
+content = 
+content-foreground = ${colors.foreground}
+content-background = ${colors.background}
+content-font=3
+
+[module/left3]
+type = custom/text
+content = 
+content-foreground = ${colors.background}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-foreground = ${colors.background}
+format-background = ${colors.foreground}
+format-prefix-foreground = ${colors.background}
+label = "%percentage:2%% "
+format-underline=${colors.undy2}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " " 
+format-prefix-foreground = ${colors.foreground}
+format-background = ${colors.background}
+label = "%percentage_used%% "
+format-underline=${colors.undy}
+
+;need to configure the hwmon-path or it won't work
+[module/temperature]
+type = internal/temperature
+interval=0.5
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input
+format-prefix=" "
+thermal-zone=0
+format-underline=${colors.undy}
+format-prefix-foreground = ${colors.foreground}
+format-background = ${colors.background}
+label="%temperature-c% "
+temp-prefix=" "
+base-temperature=20
+warn-temperature=70
+format-warn-underline=${colors.warn}
+format-warn-background=${colors.background}
+
+[module/wlan]
+type = internal/network
+;set interface
+interface = wlp0s20f3
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-background = ${colors.background}
+label-connected = "%essid% "
+format-connected-underline=${colors.undy}
+format-disconnected =
+;signal icons
+ramp-signal-0 = 
+ramp-signal-foreground = ${colors.foreground}
+
+[module/eth]
+type = internal/network
+;set interface
+;set colors urself if u want to use this config
+interface = enp7s0
+interval = 3.0
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+format-connected-underline=${colors.undy}
+label-connected = "%local_ip% "
+format-connected-background = ${colors.background}
+
+format-disconnected =
+
+[module/date]
+type = internal/date
+interval = 1
+date=" %b %d |"
+date-alt = " %d-%m-%Y "
+format-underline=${colors.undy}
+
+time = " %H:%M:%S"
+time-alt =" %H:%M:%S"
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+label = "%date% %time% "
+
+[module/sound]
+type = internal/pulseaudio
+format-volume = <ramp-volume> <label-volume>
+label-volume = "%percentage%% "
+format-muted-prefix = " "
+label-muted = "MUTE "
+format-volume-underline=${colors.undy2}
+format-muted-underline=${colors.warn}
+format-volume-background = ${colors.foreground}
+format-muted-background = ${colors.foreground}
+format-volume-foreground = ${colors.background}
+format-muted-foreground = ${colors.background}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+#
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 100
+format-charging = "<animation-charging><label-charging>"
+format-charging-underline=${colors.warn}
+format-discharging = "<ramp-capacity><label-discharging>"
+format-discharging-underline=${colors.undy2}
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.background}
+format-full-underline=${colors.warn}
+ramp-capacity-0 = " "
+ramp-capacity-1 = "" 
+ramp-capacity-2 = " "
+ramp-capacity-foreground = ${colors.background}
+ramp-capacity-background = ${colors.foreground}
+label-charging-background = ${colors.foreground}
+label-discharging-background = ${colors.foreground}
+label-full-background = ${colors.foreground}
+label-charging-foreground = ${colors.background}
+label-discharging-foreground = ${colors.background}
+label-full-foreground = ${colors.background}
+
+animation-charging-0 = " "
+animation-charging-1 = " "
+animation-charging-2 = " "
+animation-charging-3 = " "
+animation-charging-4 = " "
+animation-charging-foreground = ${colors.background}
+animation-charging-background = ${colors.foreground}
+animation-charging-framerate = 1000
+
+[module/music]
+type=custom/script
+tail=true
+format-prefix=" "
+format=<label>
+exec=~/.config/polybar/scripts/scroll.sh
+format-prefix-foreground=${colors.background}
+format-foreground=${colors.background}
+format-background=${colors.foreground}
+
+[module/play]
+type=custom/ipc
+hook-0=echo " "
+hook-1=echo " "
+initial = 1
+format-background=${colors.background}
+click-left= playerctl --player=playerctld play-pause
+
+[module/previous]
+type=custom/script
+exec = echo " "
+format=<label>
+format-background=${colors.background}
+click-left = playerctl --player=playerctld previous
+
+[module/next]
+type=custom/script
+exec = echo " "
+format=<label>
+format-background=${colors.background}
+click-left = playerctl --player=playerctld next
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
