@@ -58,7 +58,8 @@ ws-icon-6=7;
 ws-icon-7=8;
 ws-icon-8=9;
 ws-icon-9=10;
-label-mode = "%mode "
+label-mode = "|%mode%|"
+label-mode-background = ${colors.background}
 ;focused work
 label-focused = %icon%
 label-focused-background = #899999
@@ -69,7 +70,7 @@ label-focused-underline=${colors.undy}
 label-unfocused = %icon%
 label-unfocused-padding = 2
 label-unfocused-background=${colors.background}
-;visible works (active workspace on other display)
+;visible works (activc workspace on other display)
 label-visible = %icon%
 label-visible-background = #899999
 label-visible-padding = 2

@@ -1,8 +1,8 @@
 #!/bin/bash
 #playerctl required to run this script
-if [ "$(playerctl --player=playerctld status)" = "Stopped" ]
+if [ $(playerctl -l | wc -l) -eq 1 ]
 then
-    echo "hi"
+    echo "No media playing"
 elif [ "$(playerctl --player=playerctld status)" = "Paused" ]
 then
     polybar-msg $(pgrep "polybar main") hook play 2 1>/dev/null 2>&1
