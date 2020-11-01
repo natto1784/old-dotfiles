@@ -1,0 +1,10 @@
+//I've no clue about rofi configuration, will try to configure it later
+
+configuration {
+    modi:"run,ssh,drun";
+    ml-row-down: "ScrollDown";
+    show-icons:true;
+    icon-theme:"Numix Circle";
+    //theme : https://github.com/davatorium/rofi-themes/blob/master/Official%20Themes/Pop-Dark.rasi
+    theme:"/home/otaku619/.config/rofi/rofi-themes/Official\ Themes/Pop-Dark.rasi";
+}

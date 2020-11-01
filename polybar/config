@@ -227,6 +227,7 @@ format-discharging = "<ramp-capacity><label-discharging>"
 format-discharging-underline=${colors.undy2}
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.background}
+format-full-prefix-background = ${colors.foreground}
 format-full-underline=${colors.warn}
 ramp-capacity-0 = " "
 ramp-capacity-1 = "" 

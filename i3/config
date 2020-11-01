@@ -103,7 +103,7 @@ gaps inner 10
 gaps outer 10
 smart_gaps on
 
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun
 
 #my keybinds
 bindsym --release Print exec scrot '%d-%m-%Y_%I-%M-%S%p.png' -e 'mv ~/$f ~/Pictures/'
