@@ -8,7 +8,7 @@ then
     polybar-msg $(pgrep "polybar main") hook play 2 1>/dev/null 2>&1
     if [ -z "$(playerctl --player=playerctld metadata --format "{{artist}}")" ]
     then
-        playerctl --player=playerctld metadata --format "{{ artist }}"
+        playerctl --player=playerctld metadata --format "{{ title }}"
     else
         playerctl --player=playerctld metadata --format "{{ title }} - {{ artist }}"
     fi
