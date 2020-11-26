@@ -114,7 +114,7 @@ bindsym --release $mod+Print exec scrot -u '%d-%m-%Y_%I-%M-%S%p.png' -e 'mv ~/$f
 exec_always feh --bg-scale /home/otaku619/scarlet.jpg
 
 #starts compton
-exec_always compton --config /home/otaku619/.config/compton/compton.conf
+exec_always picom --config /home/otaku619/.config/picom/picom.conf --experimental-backends
 
 #launches an autotiling script
 #soruce = https://github.com/olemartinorg/i3-alternating-layout
