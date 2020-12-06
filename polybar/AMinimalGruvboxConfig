@@ -1,0 +1,179 @@
+[colors]
+background = #1d2021
+foreground = #ebdbb2
+undy = #fe8019
+warn = 	#fadb2f
+
+[bar/main]
+override-redirect = true
+offset-x = 1.5%
+offset-y = 6
+width = 97%
+height = 35
+fixed-center = true
+wm-restack = bspwm
+radius= 0.0
+background = rgba(0,0,0,0)
+foreground = ${colors.foreground}
+font-0 = Consolas:pixelsize=13:weight=bold;1
+;Main icons for modules
+font-1 = Font Awesome 5 Free Solid:pixelsize=13;1
+;For Discord icon
+font-2 = Font Awesome 5 Brands:pixelsize=13;1
+line-size =4
+modules-left =bspwm
+modules-right =temperature sound wlan battery date
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+;cursor-scroll = ns-resize
+
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state><label-mode>
+index-sort = true
+label-empty=
+;focused work
+label-focused = %name%
+label-focused-background = ${colors.foreground}
+label-focused-foreground = ${colors.background}
+label-focused-padding= 2
+label-focused-underline=${colors.undy}
+
+;occupied works
+label-occupied = %name%
+label-occupied-padding = 2
+label-occupied-background=${colors.background}
+;visible works (activc workspace on other display)
+label-visible = %name%
+label-visible-background = ${colors.background}
+label-visible-padding = 2
+
+;urgent work
+label-urgent = %name%
+label-urgent-background = ${colors.background}
+label-urgent-padding = 2
+
+;need to configure the hwmon-path or it won't work
+[module/temperature]
+type = internal/temperature
+interval=0.5
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input
+format-prefix="  "
+format-warn-prefix="  "
+thermal-zone=0
+format-underline=${colors.undy}
+format-prefix-foreground = ${colors.foreground}
+format-background = ${colors.background}
+label="%temperature-c%  "
+label-warn="%temperature-c%  "
+format-warn="<label-warn>"
+base-temperature=20
+warn-temperature=70
+format-warn-underline=${colors.warn}
+format-warn-background=${colors.background}
+
+[module/wlan]
+type = internal/network
+;set interface
+interface = wlp0s20f3
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-background = ${colors.background}
+label-connected = 
+format-connected-underline=${colors.undy}
+format-disconnected =
+;signal icons
+ramp-signal-0 = " "
+ramp-signal-foreground = ${colors.foreground}
+
+[module/eth]
+type = internal/network
+;set interface
+;set colors urself if u want to use this config
+interface = enp7s0
+interval = 3.0
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+format-connected-underline=${colors.undy}
+label-connected = "%local_ip% "
+format-connected-background = ${colors.background}
+
+format-disconnected =
+
+[module/date]
+type = internal/date
+interval = 1
+date=" %b %d |"
+date-alt = " %d-%m-%Y "
+format-underline=${colors.undy}
+
+time = " %H:%M:%S"
+time-alt =" %H:%M:%S"
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+label = "%date% %time% "
+
+[module/sound]
+type = internal/pulseaudio
+format-volume = <ramp-volume> <label-volume>
+label-volume = "%percentage%%  "
+format-muted-prefix = " "
+label-muted = "MUTE "
+format-volume-underline=${colors.undy}
+format-muted-underline=${colors.warn}
+format-volume-background = ${colors.background}
+format-muted-background = ${colors.background}
+format-volume-foreground = ${colors.foreground}
+format-muted-foreground = ${colors.foreground}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+#
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 100
+format-charging = "<animation-charging><label-charging>"
+format-charging-underline=${colors.warn}
+format-discharging = "<ramp-capacity><label-discharging>"
+format-full = "<ramp-capacity><label-full>"
+format-discharging-underline=${colors.undy}
+format-full-prefix-foreground = ${colors.foreground}
+format-full-prefix-background = ${colors.background}
+format-full-underline=${colors.warn}
+ramp-capacity-0 = " "
+ramp-capacity-1 = " " 
+ramp-capacity-2 = " "
+ramp-capacity-foreground = ${colors.foreground}
+ramp-capacity-background = ${colors.background}
+label-charging-background = ${colors.background}
+label-discharging-background = ${colors.background}
+label-full-background = ${colors.background}
+label-charging-foreground = ${colors.foreground}
+label-discharging-foreground = ${colors.foreground}
+label-full-foreground = ${colors.foreground}
+
+animation-charging-0 = " "
+animation-charging-1 = " "
+animation-charging-2 = " "
+animation-charging-3 = " "
+animation-charging-4 = " "
+animation-charging-foreground = ${colors.background}
+animation-charging-background = ${colors.foreground}
+animation-charging-framerate = 1000
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
