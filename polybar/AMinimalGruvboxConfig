@@ -60,7 +60,7 @@ label-urgent-padding = 2
 ;need to configure the hwmon-path or it won't work
 [module/temperature]
 type = internal/temperature
-interval=0.5
+interval=1
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input
 format-prefix="  "
 format-warn-prefix="  "
@@ -107,7 +107,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 1
+interval = 5
 date=" %b %d |"
 date-alt = " %d-%m-%Y "
 format-underline=${colors.undy}
@@ -167,8 +167,8 @@ animation-charging-1 = " "
 animation-charging-2 = " "
 animation-charging-3 = " "
 animation-charging-4 = " "
-animation-charging-foreground = ${colors.background}
-animation-charging-background = ${colors.foreground}
+animation-charging-foreground = ${colors.foreground}
+animation-charging-background = ${colors.background}
 animation-charging-framerate = 1000
 
 [settings]
