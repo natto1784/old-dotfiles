@@ -4,7 +4,7 @@ set laststatus=2
 set statusline=
 set statusline+=%1*
 set statusline+=\ %{ModeBruh()}\ 
-set statusline+=%2*\ %{GitBruh()}\ 
+set statusline+=%2*\%{GitBruh()}\ 
 set statusline+=%3*\ %f\ 
 set statusline+=%1*
 set statusline+=%=
@@ -14,9 +14,9 @@ let bruh="%  "
 let bruh1="  "
 set statusline+=%1*\ %p%{bruh}%l/%L%{bruh1}%c\ 
 
-hi User1 guibg=#d7ffff guifg=#00005f
-hi User2 guibg=#d7ffd7 guifg=#00005f
-hi User3 guifg=#d7ffff guibg=#444444
+hi User1 guibg=#fbf1c7 guifg=#1d2021
+hi User2 guibg=#1d2021 guifg=#fbf1c7
+hi User3 guifg=#fbf1c7 guibg=#665c54
 
 function! ModeBruh()
   let l:mode=mode()

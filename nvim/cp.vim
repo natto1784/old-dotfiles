@@ -18,4 +18,3 @@ command! -nargs=0 CompileAndRun call TermWrapper(printf('g++ -std=c++17 %s && ./
 autocmd FileType cpp nnoremap <F5> :CompileAndRun<CR>
 
 let g:split_term_style = 'vertical'
-
